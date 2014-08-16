@@ -1,4 +1,4 @@
-awk '# fatorial: return fact of user supplied number -  bob@bobnet.co.uk MCMXCVIII
+awk '# factorial: return fact of user supplied number -  bob@bobnet.co.uk MCMXCVIII
 BEGIN {
 	# prompt user; use print, not print, to avoid nl.
 	printf("Enter Number: ")
