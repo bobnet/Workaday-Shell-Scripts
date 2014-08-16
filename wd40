@@ -1,0 +1,41 @@
+:
+# wd40
+# bob@bobnet.co.uk MCMXCV
+# Who what and where!
+
+case $1 in
+	-term)
+		finger -f | grep p$2 | cut -c31-35
+	;;
+	-f)
+		finger -f
+	;;
+	-iam)
+		nawk '
+		BEGIN { "who am i" | getline
+			name = $1
+			FS=":"
+			}
+			name ~ $1 { print $5 }' /etc/passwd
+			#	id |
+			#	awk -F"(" '{print $2}' |
+			#	awk -F")" '{print $1}'
+	;;
+	-num)
+		echo "" | awk '{ 
+				while ("who" | getline)
+					n++
+				print n
+				}'   
+	;;
+	-i)
+		id | awk -F"(" '{print $2}' | awk -F")" '{print $1}'
+	;;
+	?)
+	echo "[-num]       Number of users on this machine"
+	echo "[-i]         Who am I!"
+	echo "[-iam]       Who am I exactly!"
+	echo "[-f]         finger"
+	echo "[-term user] terminal for user"
+	;;
+esac
