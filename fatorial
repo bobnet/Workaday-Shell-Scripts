@@ -1,0 +1,22 @@
+awk '# fatorial: return fact of user supplied number -  bob@bobnet.co.uk MCMXCVIII
+BEGIN {
+	# prompt user; use print, not print, to avoid nl.
+	printf("Enter Number: ")
+}
+
+# check that user enters number
+$1 ~ /[0-9]+/ {
+	#assign valuse of $1 to number and fact
+	number = $1
+	fact = number
+	#loop to mul fact*x until x =0
+	for (x = number -1 ; x > 1; x--)
+		fact *=x
+	printf("The factorial of %d is %g\n", number, fact)
+	# EXIT (CTRL-D).
+	exit
+}
+
+# if not a number, prompt again  
+$1 !~ /[0-9]+/ {printf("\nInvalid entry. Enter a number: ")
+}' -
