@@ -1,0 +1,17 @@
+#!/bin/sh
+# bob@bobnet.co.uk MCMXCV
+# directories only in colour
+# some weird overhead here somewhere but WTF!!!
+#ls --color=tty -l $1 $2 $3 $4 $5 $6 $7 $8 $9 | grep ^d
+if [ $1 ]
+then
+  for a in `ls -l $1 | grep ^d | sed "s/.* //g"`
+  do
+    ls --directory --color=tty -l $1/$a
+  done
+else
+  for a in `ls -l | grep ^d | sed "s/.* //g"`
+  do
+    ls --directory --color=tty -l $a
+  done
+fi
