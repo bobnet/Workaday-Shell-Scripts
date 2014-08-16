@@ -1,0 +1,38 @@
+# bob@bobnet.co.uk MCMXCVII
+
+# need to remove blank path entries
+# echo "Running my fixpath..."
+
+if test -d "/tmp/$HOSTNAME"
+then
+  # we already have a working directory
+  XXX=yyy
+else
+  mkdir /tmp/$HOSTNAME
+  chmod 777 /tmp/$HOSTNAME
+fi
+
+for a in `echo $PATH | sed "s/:/ /g"`
+do
+	if test -n "$a"
+	then
+		if test -d "$a"
+		then
+			FIXPATH=`file $a |grep -v "cannot open" |grep -v "sticky" |grep -v "symbolic link" |sed "s/setgid directory//g" |sed "s/directory//g"`
+			echo $FIXPATH >> /tmp/$HOSTNAME/$$path.fixer
+		fi
+	fi
+done
+cat /tmp/$HOSTNAME/$$path.fixer |sort -u > /tmp/$HOSTNAME/$$_path.fixer
+for b in `cat /tmp/$HOSTNAME/$$_path.fixer |sort -u|grep -v "^$"|grep -v "^ $"`
+do
+	if test -n "$b"
+	then
+		FIXEDPATH=$FIXEDPATH$b
+	fi
+done
+FIXEDPATH=`echo $FIXEDPATH | sed "s/^.://g"`
+FIXEDPATH=.:$FIXEDPATH
+export PATH=$FIXEDPATH
+unset FIXEDPATH FIXPATH a b
+rm /tmp/$HOSTNAME/$$path.fixer /tmp/$HOSTNAME/$$_path.fixer
