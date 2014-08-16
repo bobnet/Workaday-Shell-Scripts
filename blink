@@ -1,0 +1,7 @@
+:
+# bob@bobnet.co.uk MCMXCIII
+blink=`tput blink`
+norm=`tput sgr0`
+bold=`tput bold`
+unbold=`tput rmso`
+echo "${bold}${blink}${1}${norm}"
