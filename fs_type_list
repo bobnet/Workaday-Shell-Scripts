@@ -1,0 +1,5 @@
+#!/bin/bash
+# bob@bobnet.co.uk MCMXCII
+TEMPFILE=/tmp/fs_tmp$$.tmp
+echo "DEVICE DIRECTORY FS-TYPE" > tmp; mount | cut -d" " -f1,3,5 | \
+sort >> $TEMPFILE; cat $TEMPFILE | column -t | sed -e "1s/.*/`tput smso`&`tput rmso`/"
