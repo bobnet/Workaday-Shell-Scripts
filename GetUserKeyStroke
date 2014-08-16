@@ -1,0 +1,22 @@
+GetUserKeyStrokeGetUserKeyStroke()
+{
+# Save Old Tty setting
+oldTtySettings="`stty -g`"
+    
+# Set echo off and raw mode on
+stty -echo raw
+    
+# Get the keystroke from the user
+userKeyStroke="`dd bs=1 count=1 2> /dev/null`"
+    
+# Return character to calling program
+echo "$userKeyStroke"
+    
+# Display character on the screen
+echo "$userKeyStroke\c" >&2
+    
+# Restore the previous tty settings
+stty $oldTtySettings
+}
+
+GetUserKeyStroke
