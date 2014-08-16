@@ -1,0 +1,8 @@
+#!/bin/sh
+# bob@bobnet.co.uk MCMXC
+alias hist='history >> $HOME/history.asc'
+ # last command
+alias r='fc -e -' 
+alias rv='r v'
+alias whence='whereis'
+export PS1='\u@\h:\W >'
