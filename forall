@@ -1,0 +1,12 @@
+#!/bin/sh
+# bob@bobnet.co.uk MCMXCVII
+if [ 1 = `expr 2 \> $#` ]
+then
+  echo Usage: $0 dir cmd [optargs]
+  echo ex1: $0 /usr/include grep -i ioctl
+  echo ex2: $0 /usr/man grep ioctl
+  exit 1
+fi
+dir=$1
+shift
+find $dir -type f -print | xargs "$@"
