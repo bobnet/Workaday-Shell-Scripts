@@ -1,0 +1,3 @@
+:
+# bob@bobnet.co.uk MM
+ps -ef |grep $LOGNAME |more
