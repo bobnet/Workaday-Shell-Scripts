@@ -1,0 +1,12 @@
+#!/bin/sh
+# ls directory
+# bob@bobnet.co.uk
+if [ -x $1 ]
+then
+  str=`pwd`
+  str=$str/
+fi
+for a in `d $1 | sed "s/.* //g"`
+do
+  echo $1$str$a | sed "s/\/\//\//g"
+done
