@@ -1,0 +1,21 @@
+#!/bin/sh
+# Upper Case Filename to Lower Case and Lower Case Filename to Upper Case
+# (c) Network Aware Ltd. bob@bobnet.co.uk MMII
+if test -z $2
+then
+  echo "Need a filename" >&2
+  exit 1
+fi
+case $1 in
+	l|L|-l|-L )
+		ufname=$2
+		lfname=`echo $ufname | tr "[A-Z]" "[a-z]"`
+		mv $ufname $lfname
+	;;
+	u|U|-u|-U )
+		lfname=$2
+		ufname=`echo $lfname | tr "[a-z]" "[A-Z]"`
+		mv $lfname $ufname
+	;;
+	* ) echo "Usage -l FILENAME or -u filename"
+esac
