@@ -13,7 +13,6 @@ $1 ~ /[0-9]+/ {
 	for (x = number -1 ; x > 1; x--)
 		fact *=x
 	printf("The factorial of %d is %g\n", number, fact)
-	# EXIT (CTRL-D).
 	exit
 }
 
