@@ -1,6 +1,5 @@
 # bob@bobnet.co.uk MCMXCVI
-
-GetUserKeyStrokeGetUserKeyStroke()
+GetUserKeyStroke()
 {
 # Save Old Tty setting
 oldTtySettings="`stty -g`"
